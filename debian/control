@@ -1,0 +1,18 @@
+Source: wavesurfer
+Section: sound
+Priority: optional
+Maintainer: Guenter Geiger (Debian/GNU) <geiger@debian.org>
+Build-Depends-Indep: debhelper (>> 4.0.0), cdbs
+Standards-Version: 3.6.1
+
+Package: wavesurfer
+Architecture: all 
+Depends: libsnack2 (>= 2.2), tk8.4
+Description: Sound Manipulation Program
+ Wavesurfer is a sound manipulation program, it has been designed to suit both,
+ novice and advanced users. WaveSurfer has a simple and logical user interface 
+ that provides functionality in an intuitive way and which can be adapted to 
+ different tasks. 
+ .
+ Homepage: http://www.speech.kth.se/wavesurfer/
+

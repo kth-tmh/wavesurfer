@@ -1,0 +1,4 @@
+
+When doind an update of the package, don't forget to update the
+index file in debian/doc-base (it normally includes the version number
+like man16.html)

@@ -1,0 +1,100 @@
+wavesurfer (1.7.3-2) unstable; urgency=low
+
+  * Fixed wrong index in doc-base (closes: 285667)
+
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Tue,  4 Jan 2005 10:56:12 +0100
+
+wavesurfer (1.7.3-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Wed, 27 Oct 2004 11:17:16 +0200
+
+wavesurfer (1.7.1-2) unstable; urgency=low
+
+  * Fixed the problem with ALt-W (close window) shortcut (closes: 266441)
+  * Moved to cdbs build system
+
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Thu, 19 Aug 2004 16:01:38 +0200
+
+wavesurfer (1.7.1-1) unstable; urgency=low
+
+  * New upstream version
+  * Versioned build depends on debhelper 4
+  * bumped standards version to 3.6.1
+  * Added homepage to control file
+
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Wed, 18 Aug 2004 17:24:03 +0200
+
+wavesurfer (1.6.4-2) unstable; urgency=low
+
+  * Removed duplicated dh_installdocs call (closes: 256586)
+
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Mon, 28 Jun 2004 11:28:11 +0200
+
+wavesurfer (1.6.4-1) unstable; urgency=low
+
+  * New upstream release
+  * Quoted strings in menu file
+
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Tue, 25 May 2004 22:14:32 +0200
+
+wavesurfer (1.6.2-1) unstable; urgency=low
+
+  * New upstream version
+  * reorganized manpage and fixed some typos
+
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Tue, 24 Feb 2004 10:05:23 +0100
+
+wavesurfer (1.6.0-2) unstable; urgency=low
+
+  * fixed documentation index file in debian/doc-base (closes: #229582)
+
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Sun, 25 Jan 2004 14:37:57 +0100
+
+wavesurfer (1.6.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Fri, 23 Jan 2004 12:36:50 +0100
+
+wavesurfer (1.5.4-2) unstable; urgency=low
+
+  * added tk8.4 depends (closes: #218247) (closes: #220453)
+  * fixed doc-base reference (closes: #220700)
+
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Fri, 14 Nov 2003 06:05:45 +0100
+
+wavesurfer (1.5.4-1) unstable; urgency=low
+
+  * New upstream
+
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Mon, 20 Oct 2003 15:41:09 +0200
+
+wavesurfer (1.5.2-1) unstable; urgency=low
+
+  * new upstream
+
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Sun, 27 Jul 2003 14:37:34 +0200
+
+wavesurfer (1.4.4-1) unstable; urgency=low
+
+  * new upstream
+  
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Mon, 30 Sep 2002 11:19:02 +0200
+
+wavesurfer (1.2.1-1) unstable; urgency=low
+
+  * new upstream
+
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Mon,  4 Mar 2002 13:11:13 +0100
+
+wavesurfer (1.0.4-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Tue,  7 Aug 2001 19:54:17 +0200
+
+Local variables:
+mode: debian-changelog
+End:

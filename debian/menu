@@ -1,0 +1,2 @@
+?package(wavesurfer):needs="X11" section="Apps/Sound"\
+  title="wavesurfer" command="/usr/bin/wavesurfer"
