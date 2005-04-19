@@ -1,3 +1,12 @@
+wavesurfer (1.8.1-2) unstable; urgency=low
+
+  * adjusted doc-base file to point to man18.html instead of man17.html
+    (closes: #30323)
+  * The pitch  contour problems is resolved (closes: #287065)
+  * Added 32x32 xpm (closes: #299371)
+
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Tue, 19 Apr 2005 11:30:40 +0200
+
 wavesurfer (1.8.1-1) unstable; urgency=low
 
   * New upstream version
