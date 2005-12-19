@@ -1,3 +1,9 @@
+wavesurfer (1.8.5-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Mon, 19 Dec 2005 17:01:46 +0100
+
 wavesurfer (1.8.4-1) unstable; urgency=low
 
   * New upstream version
