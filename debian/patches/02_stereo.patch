@@ -1,0 +1,12 @@
+diff -Nur wavesurfer-1.8.5/wsurf1.8/configurations/n-waveforms.conf wavesurfer-1.8.5/wsurf1.8/configurations/n-waveforms.conf
+--- wavesurfer-1.8.5/wsurf1.8/configurations/n-waveforms.conf	2005-11-01 14:29:54.000000000 +0100
++++ wavesurfer-1.8.5/wsurf1.8/configurations/n-waveforms.conf	2007-02-12 16:32:35.000000000 +0100
+@@ -21,7 +21,7 @@
+  $pane configure -height 50
+ 
+  if {[wsurf::PluginEnabled analysis]} {
+-    $widget analysis::addWaveform $pane
++    $widget analysis::addWaveform $pane -channel $i
+  }
+ }
+ 

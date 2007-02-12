@@ -1,2 +1,2 @@
-version=2
-http://www.speech.kth.se/wavesurfer/wavesurfer-(.*)\.tar\.gz
+version=3
+http://www.speech.kth.se/wavesurfer/download.html wavesurfer-(.*)\.tar\.gz
