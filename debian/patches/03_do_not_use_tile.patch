@@ -1,0 +1,12 @@
+diff -urN wavesurfer-1.8.5.orig//wsurf1.8/wsurf.tcl wavesurfer-1.8.5/wsurf1.8/wsurf.tcl
+--- wavesurfer-1.8.5.orig//wsurf1.8/wsurf.tcl	2005-11-01 14:29:54.000000000 +0100
++++ wavesurfer-1.8.5/wsurf1.8/wsurf.tcl	2010-12-29 09:17:18.928196687 +0100
+@@ -10,7 +10,7 @@
+ package require surfutil
+ package require combobox
+ lappend auto_path /space/lib
+-if {[catch {package require tile 0.5} msg]} {
++if {1} {
+  set useTile 0
+  set ::ocdir right
+ } else {
