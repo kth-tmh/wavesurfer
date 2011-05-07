@@ -1,5 +1,0 @@
-build-tree/*/wavesurfer  usr/bin/
-build-tree/*/wsurf*/     usr/lib/
-build-tree/*/plugins     usr/lib/wsurf1.8
-build-tree/*/doc         usr/share/doc/wavesurfer
-debian/ws32.xpm          usr/share/pixmaps

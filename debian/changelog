@@ -1,3 +1,15 @@
+wavesurfer (1.8.8p3-1) unstable; urgency=low
+
+  * Rearrange things for the new upstream source tree layout.
+
+ -- Ron Lee <ron@debian.org>  Sun, 08 May 2011 00:35:42 +0930
+
+wavesurfer (1.8.5+unpacked-1) unstable; urgency=low
+
+  * Really adopt the package this time, and decdBS it.
+
+ -- Ron Lee <ron@debian.org>  Sat, 07 May 2011 20:00:48 +0930
+
 wavesurfer (1.8.5-4) unstable; urgency=low
 
   * New maintainer.  No changes, just reuploaded after pointless RoQA removal.

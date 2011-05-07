@@ -1,12 +1,39 @@
 #!/usr/bin/make -f
-# -*- mode: makefile; coding: utf-8 -*-
+#
+# Copyright 2003 - 2011, Ron Lee.
 
-DEB_TAR_SRCDIR := wavesurfer-1.8.5
-DEB_MAKE_INSTALL_TARGET := install
+clean:
+	dh_testdir
+	dh_testroot
+	dh_clean
 
-include /usr/share/cdbs/1/rules/tarball.mk
-include /usr/share/cdbs/1/rules/debhelper.mk
-include /usr/share/cdbs/1/class/makefile.mk
-include /usr/share/cdbs/1/rules/simple-patchsys.mk
 
+build:
+build-arch:
+build-indep:
+
+binary: binary-indep
+
+binary-arch:
+
+binary-indep:
+	dh_testdir
+	dh_testroot
+	dh_install 	-XREADME.txt -Xexample1.plug -Xexample2.plug	\
+			src/*			usr/share/tcltk/wavesurfer
+	dh_install 	debian/ws32.xpm		usr/share/pixmaps
+	dh_install 	wavesurfer		usr/bin
+	dh_installman 	debian/wavesurfer.1
+	dh_installdocs	doc
+	dh_installmenu
+	dh_installchangelogs
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+
+.PHONY: clean build build-arch build-indep binary binary-arch binary-indep
 

@@ -1,12 +1,11 @@
 Document: wavesurfer
-Title: Wavesurfer Manual
+Title: Wavesurfer manual
 Author: Jonas Beskow 
 Abstract: This manual describes wavesurfer, a versatile
  soundfile editor, with unique features for speech processing.
-Section: sound
+Section: Sound
 
 Format: HTML
-Index: /usr/share/doc/wavesurfer/doc/man18.html
+Index: /usr/share/doc/wavesurfer/doc/wsurf.html
 Files: /usr/share/doc/wavesurfer/doc/*.html
 
-  
