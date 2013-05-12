@@ -1,0 +1,226 @@
+# -*-Mode:Tcl-*-
+#
+#  Copyright (C) 2000-2002 Kare Sjolander 
+#
+# This file is part of the WaveSurfer package.
+# The latest version can be found at http://www.speech.kth.se/wavesurfer/
+#
+# Ogg Vorbis plug-in for WaveSurfer
+#
+# -----------------------------------------------------------------------------
+
+if [info exists snack::snackogg] return
+
+if [info exists ::wsurf::Info(CurrentPluginPath)] {
+  set dir [file dirname $::wsurf::Info(CurrentPluginPath)]
+} else {
+  set dir [file dirname [info script]]
+}
+
+set shlib [file join $dir libsnackogg[info sharedlibextension]]
+
+if {[catch {load $shlib}] != 0} {
+  catch {package require snackogg 1.3}
+}
+
+if [info exists snack::snackogg] {
+  wsurf::RegisterPlugin ogg \
+    -description "This plug-in adds support for the Ogg Vorbis audio\
+    file format.\
+    Ogg Vorbis is a completely open, patent-free, professional\
+    audio encoding and streaming technology with all the benefits\
+    of Open Source, see http://www.vorbis.com/ for more information.\
+    The Preferences dialog contains an OGG tab with options for writing\
+    ogg files. In order to save a file in the ogg format simply specify the\
+    filename extension .ogg"\
+    -url http://www.vorbis.com/ \
+    -savefileproc ogg::saveFile \
+    -sounddescriptionproc ogg::soundDescription
+ 
+ if {![info exists ::surf(extTypes)]} {
+    set ::surf(extTypes) {}
+  }
+  if {![info exists ::surf(loadTypes)]} {
+    set ::surf(loadTypes) {}
+  }
+  if {![info exists ::surf(loadKeys)]} {
+    set ::surf(loadKeys) {}
+  }
+  if {![info exists ::surf(saveTypes)]} {
+    set ::surf(saveTypes) {}
+  }
+  if {![info exists ::surf(saveKeys)]} {
+    set ::surf(saveKeys) {}
+  }
+  set ::surf(extTypes) [concat $::surf(extTypes) \
+      [list {OGG .ogg}]]
+  set ::surf(loadTypes) [concat $::surf(loadTypes) \
+      [list {{OGG Files} {.ogg .OGG}}]]
+  set ::surf(loadKeys) [concat $::surf(loadKeys) [list OGG]]
+  set ::surf(saveTypes) [concat $::surf(saveTypes) \
+      [list {{OGG Files} {.ogg .OGG}}]]
+  set ::surf(saveKeys) [concat $::surf(saveKeys) [list OGG]]
+} else {
+  wsurf::RegisterPlugin ogg \
+      -description "Not functional. Could not find the snackogg library."
+}
+
+# -----------------------------------------------------------------------------
+
+namespace eval ogg {
+  variable Info
+
+  set Info(quality) -1.0
+  set Info(nombr) 128000
+  set Info(maxbr) -1
+  set Info(minbr) -1
+  set Info(com)   ""
+  set Info(query) 1
+
+  wsurf::AddPreferencePage Ogg \
+      [namespace code PreferencesPage] \
+      [namespace code ApplyPreferences] \
+      [namespace code GetPreferences] \
+      [namespace code DefaultPreferences]
+}
+
+proc ogg::saveFile {w soundFileName} {
+  variable Info
+  
+  if {[string match -nocase *.ogg $soundFileName]} {
+    if {$Info(query)} {
+      ParametersDialog Continue
+      tkwait window .ogg
+    }
+    set s [$w cget -sound]
+    if {[catch {$s write $soundFileName -progress ::progressCallback \
+	  -nominalbitrate $Info(nombr) -maxbitrate $Info(maxbr) \
+	  -minbitrate $Info(minbr) -quality $Info(quality) \
+	  -comment $Info(com)} ret]} {
+      if {$ret!=""} {
+	setMsg "$ret"
+	return 1
+      }
+    }
+    if {[$w getInfo isLinked2File]} {
+      $s configure -file $fileName
+    }
+    return 1
+  }
+  return 0
+}
+
+proc ogg::ParametersDialog {text} {
+  variable Info
+
+  set w .ogg
+  catch {destroy $w}
+  toplevel $w
+  wm title $w "Ogg Vorbis Parameters"
+  
+  pack [frame $w.f0] -anchor w
+  pack [label $w.f0.l -text "Quality:" -widt 16 -anchor w] -side left
+  pack [entry $w.f0.e -textvar [namespace current]::Info(quality) -width 7] \
+      -side left
+
+  pack [frame $w.f1] -anchor w
+  pack [label $w.f1.l -text "Nominal bitrate:" -widt 16 -anchor w] -side left
+  pack [entry $w.f1.e -textvar [namespace current]::Info(nombr) -width 7] \
+      -side left
+  
+  pack [frame $w.f2] -anchor w
+  pack [label $w.f2.l -text "Max bitrate:" -width 16 -anchor w] -side left
+  pack [entry $w.f2.e -textvar [namespace current]::Info(maxbr) -width 7] \
+      -side left
+  
+  pack [frame $w.f3] -anchor w
+  pack [label $w.f3.l -text "Min bitrate:" -width 16 -anchor w] -side left
+  pack [entry $w.f3.e -textvar [namespace current]::Info(minbr) -width 7] \
+      -side left
+  
+  pack [frame $w.f4] -anchor w
+  pack [label $w.f4.l -text "Comment:" -width 16 -anchor w] -side left
+  pack [entry $w.f4.e -textvar [namespace current]::Info(com) -width 40] \
+      -side left
+
+  pack [frame $w.f5] -anchor w
+  pack [checkbutton $w.f5.b -text "Query parameters before saving" \
+	-variable [namespace current]::Info(query) -anchor w] -side left
+  
+  pack [frame $w.fb] -side bottom -fill x
+  pack [button $w.fb.cb -text $text -command "destroy $w"] -side top
+}
+
+proc ogg::PreferencesPage {p} {
+  variable Info
+  
+  foreach f [winfo children $p] {
+    destroy $f	
+  }
+
+  foreach var [list quality nombr maxbr minbr com query] {
+    set Info(t,$var) $Info($var)
+  }
+  pack [label $p.l -text "Ogg/Vorbis encoding parameters" -anchor w]
+
+  stringPropItem $p.f1 "Quality:" 16 7 "" [namespace current]::Info(t,quality)
+
+  stringPropItem $p.f2 "Nominal bitrate:" 16 7 "" [namespace current]::Info(t,nombr)
+
+  stringPropItem $p.f3 "Max bitrate:" 16 7 "" [namespace current]::Info(t,maxbr)
+
+  stringPropItem $p.f4 "Min bitrate:" 16 7 "" [namespace current]::Info(t,minbr)
+
+  stringPropItem $p.f5 "Comment:" 16 40 "" [namespace current]::Info(t,com)
+
+ booleanPropItem $p.f6 "Query parameters before saving" "" \
+      [namespace current]::Info(t,query)
+}
+
+proc ogg::ApplyPreferences {} {
+  variable Info
+
+  foreach var [list quality nombr maxbr minbr com query] {
+    if {[string compare $Info($var) $Info(t,$var)] != 0} {
+      set Info($var) $Info(t,$var)
+    }
+  }
+}
+
+proc ogg::GetPreferences {} {
+  variable Info
+
+  set result {}
+	
+  append result "if {\[info exists snack::snackogg\]} {"
+  foreach item [list quality nombr maxbr minbr com query] {
+    append result " set wsurf::ogg::Info($item) \{$Info($item)\}" "\n"
+  }
+  append result "}"
+  return $result
+}
+
+proc ogg::DefaultPreferences {} {
+  variable Info
+
+  set Info(t,quality) -1.0
+  set Info(t,nombr) 128000
+  set Info(t,maxbr) -1
+  set Info(t,minbr) -1
+  set Info(t,com)   ""
+  set Info(t,query) 1
+}
+
+proc ogg::soundDescription {w pane} {
+ variable Info
+
+ set l {}
+ if {[string match OGG [lindex [[$w cget -sound] info] 6]]} {
+  set l [list "Ogg/Vorbis bitrate: [[$w cget -sound] config -nominalbitrate]"]
+  lappend l "Encoded by: [[$w cget -sound] configure -vendor]"
+  lappend l "Comment: [lindex [[$w cget -sound] configure -comment] 0]"
+  lappend l "Comment: [lindex [[$w cget -sound] configure -comment] 1]"
+  lappend l "Comment: [lindex [[$w cget -sound] configure -comment] 2]"
+  }
+ return $l
+}
