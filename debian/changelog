@@ -1,3 +1,11 @@
+wavesurfer (1.8.8p4-2) unstable; urgency=low
+
+  * Catch the error thrown from 'canvas lower top topmost' when no items with
+    that tag exist yet, that tk versions after 8.5.11-2 now want to barf up.
+    Closes: #720397  Hopefully even correctly, there's been no other feedback.
+
+ -- Ron Lee <ron@debian.org>  Sat, 07 Sep 2013 22:37:48 +0930
+
 wavesurfer (1.8.8p4-1) unstable; urgency=low
 
   * Fixes bugs with waveform scaling, the config dialog, and "selection start
