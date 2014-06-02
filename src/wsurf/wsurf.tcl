@@ -234,7 +234,7 @@ proc wsurf::Initialize {args} {
     # drag-and-drop bindings
 
     if [catch {package require tkdnd}] {
-	puts "no drag and drop support"
+	puts "tkdnd not found, no drag and drop support"
     } else {
 	bind Wsurf <Expose> [namespace code [list InitDnDBindings %W]]
 	bind Vtcanvas <Expose> [namespace code [list InitDnDBindings %W]]
@@ -259,11 +259,11 @@ proc wsurf::Initialize {args} {
 
     if {[string match unix $::tcl_platform(platform)]} {
      if {[string match Darwin $::tcl_platform(os)]} {
-	 set Info(Prefs,t,PrintCmd) {lpr $FILE}
-	 set Info(Prefs,t,PrintPVCmd) {open -a Preview $FILE}
+	 set Info(Prefs,PrintCmd) {lpr $FILE}
+	 set Info(Prefs,PrintPVCmd) {open -a Preview $FILE}
       } else {
-	 set Info(Prefs,t,PrintCmd) {lpr $FILE}
-	 set Info(Prefs,t,PrintPVCmd) {ghostview $FILE}
+	 set Info(Prefs,PrintCmd) {lpr $FILE}
+	 set Info(Prefs,PrintPVCmd) {ghostview $FILE}
      }
     } elseif {[string match windows $::tcl_platform(platform)]} {
 	set Info(Prefs,PrintCmd) {"C:/Program Files/PrintFile/prfile32.exe" /q $FILE}
@@ -2998,12 +2998,12 @@ proc wsurf::_miscPage {p} {
 		     timeFormat yaxisWidth prefsWithConf theme beg play playall \
 		     playloop pause \
 		     stop record close end print zoomin zoomout zoomall zoomsel] {
-	puts var=$var
+#	puts var=$var
 	if [info exists Info(Prefs,$var)] {
-	    puts "set Info(Prefs,t,$var) $Info(Prefs,$var)"
+#	    puts "set Info(Prefs,t,$var) $Info(Prefs,$var)"
 	    set Info(Prefs,t,$var) $Info(Prefs,$var)
 	} else {
-	    puts "no Info(Prefs,$var)"
+#	    puts "no Info(Prefs,$var)"
 	}
     }
     if {$Info(Prefs,t,defaultConfig)==""} {

@@ -181,7 +181,8 @@ proc ogg::ApplyPreferences {} {
   variable Info
 
   foreach var [list quality nombr maxbr minbr com query] {
-    if {[string compare $Info($var) $Info(t,$var)] != 0} {
+    if {[info exists Info(t,$var)] \
+     && [string compare $Info($var) $Info(t,$var)] != 0} {
       set Info($var) $Info(t,$var)
     }
   }

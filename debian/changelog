@@ -1,3 +1,37 @@
+wavesurfer (1.8.8p4-3) unstable; urgency=medium
+
+  * Fix broken initialisation of (Prefs,PrintCmd).  This appears to have been
+    silently broken since at least since 1.8.5, but now explodes with the new
+    tk 8.5.15-4 when the Preferences Dialog is opened.
+
+  * Remove the 'Defaults' and 'Apply' buttons from the Preferences Dialog.
+    The SetDefaultPrefs function was 'obsoleted' between 1.8.5 and 1.8.8, so
+    pressing that button just throws an error. The ApplyPreferences function
+    was changed some time before 1.8.8 to clear the Info(Prefs,t,*) keys, so
+    pressing it clears all the current values from the dialog, and it doesn't
+    actually save them to the config file until you press Ok anyway, so avoid
+    the disturbing visual and just simplify it to the choice of Ok or Cancel.
+
+  * Fix the operation of "Make this the default configuration" when the Ogg
+    plugin is present.  That option is offered if no configuration file is
+    present, and before the wsurf::ogg option 't' keys have been set, so it
+    fails trying to write out the preferences when Info(t,quality) is read.
+    Info(quality) et al. are initialised when the plugin is first loaded
+    though, so just test if the 't' keys are set before using them.
+    This would silently fail "successfully" with older tk, but now it throws
+    an error with more recent versions.  Closes: #738703
+
+  * Drop some debug verbiage that ordinary users don't care to see on the
+    console.
+
+  * Make the "no drag and drop support" message explain that you can get it
+    if you install tkdnd, which we now also Suggest.
+
+  * Drop wish as an alternative to tk8.5, this doesn't currently work with
+    tk8.6 and I haven't yet looked at what will be needed to make it do so.
+
+ -- Ron Lee <ron@debian.org>  Tue, 03 Jun 2014 04:37:04 +0930
+
 wavesurfer (1.8.8p4-2) unstable; urgency=low
 
   * Catch the error thrown from 'canvas lower top topmost' when no items with

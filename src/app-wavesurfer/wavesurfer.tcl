@@ -439,8 +439,8 @@ proc Revert {} {
 
 proc OpenFile {args} {
 
-    puts [info level 0]
-    puts defaultConfig=$::wsurf::Info(Prefs,defaultConfig)
+#   puts [info level 0]
+#   puts defaultConfig=$::wsurf::Info(Prefs,defaultConfig)
     global surf
     variable Info  
     
@@ -2252,10 +2252,10 @@ proc PreferencesDialog {} {
      -command "destroy .prefs;SavePreferences"] -side $::ocdir -padx 3 -expand true
  pack [ttk::button .prefs.f.b2 -text [::util::mc Cancel] -width 8 \
      -command "destroy .prefs"] -side $::ocdir -padx 3 -expand true
- pack [ttk::button .prefs.f.b3 -text [::util::mc Defaults] \
-     -command SetDefaultPrefs] -side left -padx 3 -expand true 
- pack [ttk::button .prefs.f.b4 -text [::util::mc Apply] -width 8 \
-     -command ApplyPreferences] -side left -padx 3 -expand true
+#pack [ttk::button .prefs.f.b3 -text [::util::mc Defaults] \
+#    -command SetDefaultPrefs] -side left -padx 3 -expand true
+#pack [ttk::button .prefs.f.b4 -text [::util::mc Apply] -width 8 \
+#    -command ApplyPreferences] -side left -padx 3 -expand true
 
  set notebook .prefs.nb
  set pages {}
