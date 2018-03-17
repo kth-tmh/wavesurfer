@@ -1,3 +1,27 @@
+wavesurfer (1.8.8p5-1) unstable; urgency=medium
+
+  * This upstream release merges most of the patches we added between the
+    1.8.8p4-1 and 1.8.8p4-3 releases, and adds a few extra ones for tk8.6
+    support.
+
+  * Switch the tk dependency to 8.6, tk8.5 is EOL and its maintainers want to
+    drop it now.  I'm going to keep this as a versioned dependency (even though
+    upstream had dropped the versioned invocation of wish with this release)
+    because historically, each new tk version usually broke something that we
+    needed to tweak the code to fix, so let's not let that happen silently and
+    go unnoticed until it's too late in a release cycle to fix.
+    Closes: #893209
+
+  * Change the libsnack2 dependency to tcl-snack in line with the renaming of
+    that package to fit the Tcl/Tk policy.  We'd stuck with libsnack2 (which
+    the new package provides) to keep backports simple, and though Wheezy LTS
+    isn't quite EOL yet, that's only a couple of months away now and the new
+    tk8.6 dependency is already unsatisfiable there, so anyone really wanting
+    to use this there is probably going to need to tweak at least that anyway.
+    Closes: #725256
+
+ -- Ron Lee <ron@debian.org>  Sun, 18 Mar 2018 05:28:06 +1030
+
 wavesurfer (1.8.8p4-3) unstable; urgency=medium
 
   * Fix broken initialisation of (Prefs,PrintCmd).  This appears to have been
