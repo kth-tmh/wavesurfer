@@ -22,7 +22,7 @@ binary-indep:
 	dh_install 	-XREADME.txt -Xexample1.plug -Xexample2.plug	\
 			src/*			usr/share/tcltk/wavesurfer
 	dh_install 	debian/ws32.xpm		usr/share/pixmaps
-	dh_install 	wavesurfer		usr/bin
+	dh_install 	debian/bin/wavesurfer	usr/bin
 	dh_installman 	debian/wavesurfer.1
 	dh_installdocs	doc
 	dh_installmenu

@@ -235,7 +235,7 @@ proc wsurf::Initialize {args} {
     # drag-and-drop bindings
 
     if [catch {package require tkdnd}] {
-	puts "tkdnd not found, no drag and drop support"
+	puts "no drag and drop support"
     } else {
 	bind Wsurf <Expose> [namespace code [list InitDnDBindings %W]]
 	bind Vtcanvas <Expose> [namespace code [list InitDnDBindings %W]]
@@ -3003,12 +3003,12 @@ proc wsurf::_miscPage {p} {
 		     timeFormat yaxisWidth prefsWithConf theme beg play playall \
 		     playloop pause \
 		     stop record close end print zoomin zoomout zoomall zoomsel] {
-#	puts var=$var
+	puts var=$var
 	if [info exists Info(Prefs,$var)] {
-#	    puts "set Info(Prefs,t,$var) $Info(Prefs,$var)"
+	    puts "set Info(Prefs,t,$var) $Info(Prefs,$var)"
 	    set Info(Prefs,t,$var) $Info(Prefs,$var)
 	} else {
-#	    puts "no Info(Prefs,$var)"
+	    puts "no Info(Prefs,$var)"
 	}
     }
     if {$Info(Prefs,t,defaultConfig)==""} {

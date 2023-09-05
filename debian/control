@@ -1,12 +1,9 @@
 Source: wavesurfer
 Section: sound
 Priority: optional
-Maintainer: Ron Lee <ron@debian.org>
+Maintainer: Debian QA Group <packages@qa.debian.org>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 4.1.3.0
-Homepage: http://www.speech.kth.se/wavesurfer
-Vcs-Git: git://git.debian.org/users/ron/wavesurfer.git
-Vcs-Browser: http://git.debian.org/?p=users/ron/wavesurfer.git
 
 Package: wavesurfer
 Architecture: all 
@@ -17,4 +14,3 @@ Description: Sound Manipulation Program
  novice and advanced users. WaveSurfer has a simple and logical user interface 
  that provides functionality in an intuitive way and which can be adapted to 
  different tasks. 
-
