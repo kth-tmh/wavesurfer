@@ -1,11 +1,11 @@
 #!/bin/sh
 # the next line restarts using wish \
-exec wish8.5 "$0" "$@"
+exec wish "$0" "$@"
 
-set RELEASE 1.8.8p4
+set RELEASE 1.8.8p5
 set BUILD @BUILD@
 #
-#  Copyright (c) 2000-2011 Jonas Beskow and Kare Sjolander
+#  Copyright (c) 2000-2017 Jonas Beskow and Kare Sjolander
 #
 # This file is part of the WaveSurfer package.
 # The latest version can be found at http://sourceforge.net/projects/wavesurfer
@@ -67,7 +67,7 @@ namespace eval ::splash {
  set bg lightgray
  set fg black
  set fg2 black
- pack [label $splash.lx -text [::util::mc "WaveSurfer 1.8.8p4"] -font "helvetica 12" -bg $bg -fg $fg] -side top -expand 1 -fill x
+ pack [label $splash.lx -text [::util::mc "WaveSurfer 1.8.8p5"] -font "helvetica 12" -bg $bg -fg $fg] -side top -expand 1 -fill x
  pack [canvas $splash.c -width $width -height $height -bg $bg -highlightthickness 0] -side top 
  $splash.c create image $pad $pad -image $img -anchor nw
  pack [label $splash.l0 -text [::util::mc "Initializing..."] -font "helvetica 12" -bg $bg -fg $fg] -side top -expand 1 -fill x
@@ -391,8 +391,9 @@ proc ChooseEntry {index} {
   } else {
    OpenFile $::filemap($name)
   }
+
+  if 0 {
   # 070910, for playing back float-files
-  if 1 {
    set ::convert(encoding) Lin16 
    set ::convert(rate)     44100
    set ::convert(channels) 1
@@ -401,6 +402,7 @@ proc ChooseEntry {index} {
    $w configure -selection [list 0.0 $length]
    DoNormalize $w
   }
+
   if {$::Info(chooser,autoplay)} {
    [wsurf::GetCurrent] play
   }
@@ -2278,7 +2280,7 @@ proc PreferencesDialog {} {
  foreach page $pages proc $procs {
    set lowpage [string tolower $page]
    $notebook add [ttk::frame $notebook.$lowpage] -text $page
-   $proc $notebook.$lowpage
+   eval $proc [list $notebook.$lowpage]
  }
   $notebook select 2
 }
@@ -2556,7 +2558,8 @@ proc RegTypesDialog {} {
 }
 
 proc About {} {
- tk_messageBox -title "About WaveSurfer" -message "WaveSurfer 1.8.8p4-1112300908\nCopyright (c) 2000-2011 Jonas Beskow and Kare Sjolander\n"
+ tk_messageBox -title "About WaveSurfer" -message "WaveSurfer 1.8.8p5-1701261420
+Copyright (c) 2000-2017 Jonas Beskow and Kare Sjolander\n"
 }
 
 if {![string match macintosh $::tcl_platform(platform)]} {
@@ -2649,7 +2652,7 @@ toplevel .x
 #wm iconbitmap .x snackPlay
 set Info(toplevels) .x
 wm withdraw .x
-wm title .x "WaveSurfer 1.8.8p4"
+wm title .x "WaveSurfer 1.8.8p5"
 wm minsize .x 200 1
 if {$::tcl_platform(os) == "Darwin"} {
     bind .x <Visibility> [list wm resizable .x 1 0]

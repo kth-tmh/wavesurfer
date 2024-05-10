@@ -1,5 +1,5 @@
 #
-#  Copyright (c) 2000-2011 Jonas Beskow and Kare Sjolander
+#  Copyright (c) 2000-2017 Jonas Beskow and Kare Sjolander
 #
 # This file is part of the WaveSurfer package.
 # The latest version can be found at http://sourceforge.net/projects/wavesurfer
@@ -143,6 +143,7 @@ proc wsurf::Initialize {args} {
     set Info(Img,record) [image create photo -data R0lGODlhFQAVAKEAANnZ2f8AAP///////yH+FUNyZWF0ZWQgd2l0aCBUaGUgR0lNUAAh+QQBCgAAACwAAAAAFQAVAAACJoSPqcvtDyMINMhZM8zcuq41ICeOVWl6S0p95pNu4BVe9o3n+lIAADs=]
 
     set Info(ValidPluginOptions) {
+	-version                version
 	-description                description
 	-url                        URL
 	-dependencies               dependencies
@@ -259,11 +260,11 @@ proc wsurf::Initialize {args} {
 
     if {[string match unix $::tcl_platform(platform)]} {
      if {[string match Darwin $::tcl_platform(os)]} {
-	 set Info(Prefs,t,PrintCmd) {lpr $FILE}
-	 set Info(Prefs,t,PrintPVCmd) {open -a Preview $FILE}
+	 set Info(Prefs,PrintCmd) {lpr $FILE}
+	 set Info(Prefs,PrintPVCmd) {open -a Preview $FILE}
       } else {
-	 set Info(Prefs,t,PrintCmd) {lpr $FILE}
-	 set Info(Prefs,t,PrintPVCmd) {ghostview $FILE}
+	 set Info(Prefs,PrintCmd) {lpr $FILE}
+	 set Info(Prefs,PrintPVCmd) {ghostview $FILE}
      }
     } elseif {[string match windows $::tcl_platform(platform)]} {
 	set Info(Prefs,PrintCmd) {"C:/Program Files/PrintFile/prfile32.exe" /q $FILE}
@@ -1024,10 +1025,11 @@ proc wsurf::ZoomCallback {canvas amt x y} {
     upvar [namespace current]::${w}::widgets wid
     upvar [namespace current]::${w}::data d
     set pane [lindex [_getPanes $w] 0]
-    set c [$pane canvas]
-    set relx [expr {1.0*$x/[winfo width $c]}]
-    
-    $wid(wavebar) zoom [expr 1.0*$amt/$Info(scrollwheelstep)] $relx
+    if {$pane!=""} {
+	set c [$pane canvas]
+	set relx [expr {1.0*$x/[winfo width $c]}]
+        $wid(wavebar) zoom [expr 1.0*$amt/$Info(scrollwheelstep)] $relx
+    }
 }
 
 
@@ -1213,13 +1215,16 @@ proc wsurf::create {w args} {
      -encoding $Info(Prefs,defEncoding) -channels $Info(Prefs,defChannels) \
      -file [file join $Info(Prefs,tmpDir) \
      $w.[pid].wav] -debug $Info(snackDebug) \
-     -changecommand [namespace code [list _soundChanged $w]]]
+		     -changecommand [list ::wsurf::_soundChanged-$w]]
+#		     -changecommand [list ::wsurf::_soundChanged $w]]
   } else {
    set d(sound) [snack::sound -rate $Info(Prefs,defRate) \
      -encoding $Info(Prefs,defEncoding) -channels $Info(Prefs,defChannels) \
      -debug $Info(snackDebug) \
-     -changecommand [namespace code [list _soundChanged $w]]]
+		     -changecommand [list ::wsurf::_soundChanged-$w]]
+#     -changecommand [namespace code [list _soundChanged $w]]]
   }
+     proc ::wsurf::_soundChanged-$w {args} [list _soundChanged $w \$args]
   set d(externalSoundObj) 0
  } else {
   set d(sound) $a(-sound)
@@ -1524,7 +1529,7 @@ proc wsurf::_callback {w proc args} {
    if {[info exists Info(Callback,$plug,$proc)]} {
     #<< "invoking callback: plugin=$plug\tproc=$proc"
     set cb $Info(Callback,$plug,$proc)
-    lappend result [eval [list $cb] [list $w] $args]
+    lappend result [eval $cb [list $w] $args]
    }
   }
  }
@@ -1915,17 +1920,17 @@ proc wsurf::configure {w args} {
      }
     }
    }
-   -sound {
-    $d(sound) destroy
-    set d(sound) $val
-    set d(externalSoundObj) 1
-    $wid(wavebar) configure -sound $val
-    $val configure -changecommand [namespace code [list _soundChanged $w]]
-    _soundChanged $w New
-   }
-   default {
-    error "unknown option \"$opt\""
-   }
+      -sound {
+	  $d(sound) destroy
+	  set d(sound) $val
+	  set d(externalSoundObj) 1
+	  $wid(wavebar) configure -sound $val
+	  $val configure -changecommand [list ::wsurf::_soundChanged-$w]
+	  _soundChanged $w New
+      }
+      default {
+	  error "unknown option \"$opt\""
+      }
   }
  }
 }
@@ -2384,7 +2389,7 @@ proc wsurf::_drawPropertyPages {w pane} {
     foreach page $pages pproc $procs {
 	set lowpage [string tolower $page]
 	$notebook add [ttk::frame $notebook.$lowpage] -text $page
-	$pproc $w $pane $notebook.$lowpage
+	eval $pproc [list $w $pane $notebook.$lowpage]
     }
     $notebook select $d($pane,lastPropertyPage)
 }

@@ -1,5 +1,5 @@
 #
-#  Copyright (c) 2000-2011 Jonas Beskow and Kare Sjolander
+#  Copyright (c) 2000-2017 Jonas Beskow and Kare Sjolander
 #
 # This file is part of the WaveSurfer package.
 # The latest version can be found at http://sourceforge.net/projects/wavesurfer
@@ -471,7 +471,7 @@ proc vtcanvas::redraw {w} {
   $c coords leftbar $x0 0 $x0 $height
   $c coords rightbar $x1 0 $x1 $height
   $c raise top
-  $c lower top topmost
+     #  $c lower top topmost
   $c raise selbg
   $c raise sellen
   $c lower bottom
