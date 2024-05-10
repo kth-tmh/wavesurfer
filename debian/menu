@@ -1,6 +1,0 @@
-?package(wavesurfer):\
-  needs="X11"\
-  section="Applications/Sound"\
-  title="wavesurfer" \
-  command="/usr/bin/wavesurfer"\
-  icon="/usr/share/pixmaps/ws32.xpm"
