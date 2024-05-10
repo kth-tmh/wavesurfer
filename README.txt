@@ -31,7 +31,7 @@ and Tcl/Tk8.4.9 on the Mac.
 Running WaveSurfer
 -------------------------------------------------------------------
 Once you have installed both of the above and made sure they work, change
-directory to wavesurfer-1.8.8p3/ and type
+directory to wavesurfer-1.8.8p4/ and type
 
 ./wavesurfer.tcl
 
