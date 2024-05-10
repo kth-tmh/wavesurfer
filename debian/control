@@ -3,7 +3,7 @@ Section: sound
 Priority: optional
 Maintainer: Debian QA Group <packages@qa.debian.org>
 Build-Depends: debhelper (>= 9)
-Standards-Version: 4.1.3.0
+Standards-Version: 4.7.0
 Vcs-Browser: https://salsa.debian.org/debian/wavesurfer
 Vcs-Git: https://salsa.debian.org/debian/wavesurfer.git
 
