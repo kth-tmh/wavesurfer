@@ -4,6 +4,7 @@ Priority: optional
 Maintainer: Debian QA Group <packages@qa.debian.org>
 Build-Depends: debhelper-compat (= 13)
 Standards-Version: 4.7.0
+Homepage: https://sourceforge.net/projects/wavesurfer
 Vcs-Browser: https://salsa.debian.org/debian/wavesurfer
 Vcs-Git: https://salsa.debian.org/debian/wavesurfer.git
 
