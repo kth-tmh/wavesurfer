@@ -111,7 +111,7 @@ wavesurfer (1.8.5-3) unstable; urgency=high
 
   * QA upload.
   * Add 03_do_not_use_tile.patch with suggested workaround from upstream to
-    start wavesurfer in any case in non-tile mode (Closes: #606281). 
+    start wavesurfer in any case in non-tile mode (Closes: #606281).
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 29 Dec 2010 09:18:37 +0100
 
@@ -236,7 +236,7 @@ wavesurfer (1.5.2-1) unstable; urgency=low
 wavesurfer (1.4.4-1) unstable; urgency=low
 
   * new upstream
-  
+
  -- Guenter Geiger (Debian/GNU) <geiger@debian.org>  Mon, 30 Sep 2002 11:19:02 +0200
 
 wavesurfer (1.2.1-1) unstable; urgency=low
