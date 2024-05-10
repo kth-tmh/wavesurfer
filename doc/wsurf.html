@@ -1,0 +1,116 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>::wsurf::ApplyPreferences</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:beskow@dyna067-212.speech.kth.se" />
+</head>
+
+<body style="background-color: white">
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<p><a name="__index__"></a></p>
+
+<ul>
+
+	<li><a href="#__wsurf__applypreferences">::wsurf::ApplyPreferences</a></li>
+	<li><a href="#__wsurf__chooseconfigurationdialog">::wsurf::ChooseConfigurationDialog</a></li>
+	<li><a href="#__wsurf__getconfigurations">::wsurf::GetConfigurations</a></li>
+	<li><a href="#__wsurf__getcurrent">::wsurf::GetCurrent</a></li>
+	<li><a href="#__wsurf__getopt">::wsurf::getopt</a></li>
+	<li><a href="#__wsurf__getpreference">::wsurf::GetPreference</a></li>
+	<li><a href="#__wsurf__getpreferences">::wsurf::GetPreferences</a></li>
+	<li><a href="#__wsurf__getplugins">::wsurf::GetPlugins</a></li>
+	<li><a href="#__wsurf__initialize">::wsurf::Initialize</a></li>
+	<li><a href="#__wsurf__makecurrent">::wsurf::MakeCurrent</a></li>
+	<li><a href="#__wsurf__preferencepage">::wsurf::PreferencePage</a></li>
+	<li><a href="#__wsurf__needsave">::wsurf::NeedSave</a></li>
+	<li><a href="#__wsurf__setdefaultprefs">::wsurf::SetDefaultPrefs</a></li>
+	<li><a href="#__wsurf__setpreference">::wsurf::SetPreference</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="__wsurf__applypreferences">::wsurf::ApplyPreferences</a></h1>
+<p>This command should be invoked if the user hits &quot;OK&quot; or &quot;Apply&quot; in an applications preferences dialog to handle global widget preferences.</p>
+<p>
+</p>
+<hr />
+<h1><a name="__wsurf__chooseconfigurationdialog">::wsurf::ChooseConfigurationDialog</a></h1>
+<p>This command is used to to display the &quot;Choose configuration&quot; dialog.</p>
+<p>
+</p>
+<hr />
+<h1><a name="__wsurf__getconfigurations">::wsurf::GetConfigurations</a></h1>
+<p>Returns a list with available configurations.</p>
+<p>
+</p>
+<hr />
+<h1><a name="__wsurf__getcurrent">::wsurf::GetCurrent</a></h1>
+<p>Returns the name of the currently active wsurf widget.</p>
+<p>
+</p>
+<hr />
+<h1><a name="__wsurf__getopt">::wsurf::getopt</a></h1>
+<p>This procedure is invoked to handle option parsing of the command line. This allows plug-ins to handle their own command line switches.</p>
+<p>
+</p>
+<hr />
+<h1><a name="__wsurf__getpreference">::wsurf::GetPreference</a></h1>
+<p>Returns the current value for specified preference. Syntax:</p>
+<p><code>::wsurf::GetPreference preference</code></p>
+<p>
+</p>
+<hr />
+<h1><a name="__wsurf__getpreferences">::wsurf::GetPreferences</a></h1>
+<p>Returns global widget preferences in text form.</p>
+<p>
+</p>
+<hr />
+<h1><a name="__wsurf__getplugins">::wsurf::GetPlugins</a></h1>
+<p>Returns a list with available plug-ins.</p>
+<p>
+</p>
+<hr />
+<h1><a name="__wsurf__initialize">::wsurf::Initialize</a></h1>
+<p>This command initializes the wsurf library and should be called before creating the first widget. The command loads all plug-ins, creates default bindings, and sets default preferences. Syntax:</p>
+<p><code>::wsurf::Initialize preference ?-plugindir dir? ?-configdir dir?</code></p>
+<p>The options are used to specify additional directories to search for plug-ins and configurations.</p>
+<p>
+</p>
+<hr />
+<h1><a name="__wsurf__makecurrent">::wsurf::MakeCurrent</a></h1>
+<p>Makes a wsurf widget current. Syntax:</p>
+<p><code>::wsurf::MakeCurrent widget</code></p>
+<p>
+</p>
+<hr />
+<h1><a name="__wsurf__preferencepage">::wsurf::PreferencePage</a></h1>
+<p>This command returns a list with global widget tab names and corresponding notebook page rendering procedures.</p>
+<p>
+</p>
+<hr />
+<h1><a name="__wsurf__needsave">::wsurf::NeedSave</a></h1>
+<p>Returns 1 if there is an unsaved modification to a sound or to related data in a plug-in.</p>
+<p>
+</p>
+<hr />
+<h1><a name="__wsurf__setdefaultprefs">::wsurf::SetDefaultPrefs</a></h1>
+<p>Sets default values for global widget preferences.</p>
+<p>
+</p>
+<hr />
+<h1><a name="__wsurf__setpreference">::wsurf::SetPreference</a></h1>
+<p>Sets specified preference to given value. Syntax:</p>
+<p><code>::wsurf::SetPreference preference value</code></p>
+
+</body>
+
+</html>
