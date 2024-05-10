@@ -1,3 +1,22 @@
+wavesurfer (1.8.8p5-3) unstable; urgency=medium
+
+  * QA upload.
+
+  * Added d/gbp.conf to describe branch layout.
+  * Updated vcs in d/control to Salsa.
+  * Updated d/gbp.conf to enforce the use of pristine-tar.
+  * Updated Standards-Version from 4.1.3.0 to 4.7.0.
+  * Use wrap-and-sort -at for debian control files
+  * Trim trailing whitespace.
+  * Add missing ${misc:Depends} to Depends for wavesurfer.
+  * Bump debhelper from deprecated 9 to 13.
+  * Set debhelper-compat version in Build-Depends.
+  * Added sourceforge page as upstream homepage in d/control.
+  * Switched to XDG desktop entry from Debian menu (Closes: #769858).
+  * Changed d/rules to standard dh edition.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Fri, 10 May 2024 09:17:49 +0200
+
 wavesurfer (1.8.8p5-2) unstable; urgency=medium
 
   * QA upload.
