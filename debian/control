@@ -11,6 +11,7 @@ Package: wavesurfer
 Architecture: all
 Depends: tcl-snack,
          tk8.6,
+         ${misc:Depends},
 Suggests: tkdnd,
 Description: Sound Manipulation Program
  Wavesurfer is a sound manipulation program, it has been designed to suit both
