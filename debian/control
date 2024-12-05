@@ -7,6 +7,7 @@ Standards-Version: 4.7.0
 Homepage: https://sourceforge.net/projects/wavesurfer
 Vcs-Browser: https://salsa.debian.org/debian/wavesurfer
 Vcs-Git: https://salsa.debian.org/debian/wavesurfer.git
+Rules-Requires-Root: no
 
 Package: wavesurfer
 Architecture: all
