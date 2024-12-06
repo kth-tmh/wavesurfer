@@ -1,3 +1,10 @@
+wavesurfer (1.8.8p5-4) unstable; urgency=medium
+
+  * QA upload.
+  * debian/control: Add Rules-Requires-Root field
+
+ -- Daniel Alber Costa <danielrodrc@gmail.com>  Thu, 05 Dec 2024 20:47:48 -0300
+
 wavesurfer (1.8.8p5-3) unstable; urgency=medium
 
   * QA upload.
