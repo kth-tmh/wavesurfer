@@ -1,5 +1,5 @@
 
-Copyright (c) 2000-2017 Jonas Beskow and Kare Sjolander
+@COPYRIGHT@
 
 The following terms apply to all files associated
 with the software unless explicitly disclaimed in individual files.
