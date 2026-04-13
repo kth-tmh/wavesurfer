@@ -1,4 +1,0 @@
-#!/bin/sh
-
-exec /usr/share/tcltk/wavesurfer/app-wavesurfer/wavesurfer.tcl "$@"
-

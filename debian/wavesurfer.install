@@ -1,4 +1,0 @@
-src/*                                     usr/share/tcltk/wavesurfer
-debian/bin/wavesurfer                     usr/bin
-debian/net.sourceforge.wavesurfer.desktop usr/share/applications
-debian/ws32.xpm                           usr/share/pixmaps
