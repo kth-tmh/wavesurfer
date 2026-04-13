@@ -29,7 +29,26 @@ patchlevel 4 (2011-12-30):
 + fixed bugs 3297829 (waveform scaling),3181986 (config dialog error)
 + applied patch 3466895 (selection edit error)
 
-patchlevel 5 (2016-11-23, +update 2017-01-25):
-+ fixed Mac OS X 10.12 (Sierra) compatibility issue + new Tcl 8.6.6 runtime)
+patchlevel 5 (2016-11-23, +update 2017-01-25, +update 2017-09-27):
++ fixed Mac OS X 10.12 (Sierra) compatibility issue + new Tcl 8.6.6 runtime) 
 + fixed "namespace inscope"-bug for properties and preferences dialogs
 + new Linux Tcl 8.6.6 runtime (better compatibility with new Ubuntu releases)
++ fixed 'invalid command name ".x.s1.workspace.wavebar.c0"' error on
+       first file opening
+
+2018-05-30: fixed Mac OS X 10.13 (High Sierra) issue, new Tcl 8.6.8
+runtime (in wavesurfer-1.8.8p5-osx-i386.dmg)
+
+patchlevel 6 (2019-10-15):
++ MacOS 10.15 (Catalina) compatibility:
+  	64-bit binary, Tcl 8.6.9, spectrogram color issue fix
++ added Snack (2.2.10) source code to project, with improved PortAudio backend
+  	(used for MacOS) + MacOS build script
++ added TclTk (8.6.9) MacOS download + build scripts
+
+  NOTE Re. Recording on MacOS (Catalina & Mojave):
+	 For recording to work on MacOS, WaveSurfer must presently be started from Terminal
+  	 (press cmd + space, type Terminal, then in the Terminal window, type
+  	 /Applications/WaveSurfer.app/Contents/MacOS/WaveSurfer)
+	 The issue, and it's work-around, is similar to the one discussed here:
+	 https://www.audacityteam.org/macos-10-15-catalina-is-not-yet-supported-by-audacity/
