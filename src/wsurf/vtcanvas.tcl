@@ -1,5 +1,5 @@
 #
-#  @COPYRIGHT@
+#  Copyright (c) 2000-2017 Jonas Beskow and Kare Sjolander
 #
 # This file is part of the WaveSurfer package.
 # The latest version can be found at http://sourceforge.net/projects/wavesurfer

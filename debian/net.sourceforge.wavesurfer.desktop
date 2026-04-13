@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=WaveSurfer
+Comment=Sound Manipulation Program
+Icon=ws32.xpm
+Type=Application
+Categories=AudioVideo;Audio;Player;
+Keywords=sound;
+Exec=wavesurfer
+StartupNotify=false
+Terminal=false

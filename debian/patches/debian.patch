@@ -1,0 +1,86 @@
+--- wavesurfer-1.8.8p5.orig/src/app-wavesurfer/wavesurfer.tcl
++++ wavesurfer-1.8.8p5/src/app-wavesurfer/wavesurfer.tcl
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ # the next line restarts using wish \
+-exec wish "$0" "$@"
++exec wish8.6 "$0" "$@"
+ 
+ set RELEASE 1.8.8p5
+ set BUILD @BUILD@
+@@ -441,8 +441,8 @@ proc Revert {} {
+ 
+ proc OpenFile {args} {
+ 
+-    puts [info level 0]
+-    puts defaultConfig=$::wsurf::Info(Prefs,defaultConfig)
++#   puts [info level 0]
++#   puts defaultConfig=$::wsurf::Info(Prefs,defaultConfig)
+     global surf
+     variable Info  
+     
+@@ -2254,10 +2254,10 @@ proc PreferencesDialog {} {
+      -command "destroy .prefs;SavePreferences"] -side $::ocdir -padx 3 -expand true
+  pack [ttk::button .prefs.f.b2 -text [::util::mc Cancel] -width 8 \
+      -command "destroy .prefs"] -side $::ocdir -padx 3 -expand true
+- pack [ttk::button .prefs.f.b3 -text [::util::mc Defaults] \
+-     -command SetDefaultPrefs] -side left -padx 3 -expand true 
+- pack [ttk::button .prefs.f.b4 -text [::util::mc Apply] -width 8 \
+-     -command ApplyPreferences] -side left -padx 3 -expand true
++#pack [ttk::button .prefs.f.b3 -text [::util::mc Defaults] \
++#    -command SetDefaultPrefs] -side left -padx 3 -expand true
++#pack [ttk::button .prefs.f.b4 -text [::util::mc Apply] -width 8 \
++#    -command ApplyPreferences] -side left -padx 3 -expand true
+ 
+  set notebook .prefs.nb
+  set pages {}
+--- wavesurfer-1.8.8p5.orig/src/plugins/ogg.plug
++++ wavesurfer-1.8.8p5/src/plugins/ogg.plug
+@@ -181,7 +181,8 @@ proc ogg::ApplyPreferences {} {
+   variable Info
+ 
+   foreach var [list quality nombr maxbr minbr com query] {
+-    if {[string compare $Info($var) $Info(t,$var)] != 0} {
++    if {[info exists Info(t,$var)] \
++     && [string compare $Info($var) $Info(t,$var)] != 0} {
+       set Info($var) $Info(t,$var)
+     }
+   }
+--- wavesurfer-1.8.8p5.orig/src/wsurf/vtcanvas.tcl
++++ wavesurfer-1.8.8p5/src/wsurf/vtcanvas.tcl
+@@ -471,7 +471,7 @@ proc vtcanvas::redraw {w} {
+   $c coords leftbar $x0 0 $x0 $height
+   $c coords rightbar $x1 0 $x1 $height
+   $c raise top
+-     #  $c lower top topmost
++  catch {$c lower top topmost}
+   $c raise selbg
+   $c raise sellen
+   $c lower bottom
+--- wavesurfer-1.8.8p5.orig/src/wsurf/wsurf.tcl
++++ wavesurfer-1.8.8p5/src/wsurf/wsurf.tcl
+@@ -235,7 +235,7 @@ proc wsurf::Initialize {args} {
+     # drag-and-drop bindings
+ 
+     if [catch {package require tkdnd}] {
+-	puts "no drag and drop support"
++	puts "tkdnd not found, no drag and drop support"
+     } else {
+ 	bind Wsurf <Expose> [namespace code [list InitDnDBindings %W]]
+ 	bind Vtcanvas <Expose> [namespace code [list InitDnDBindings %W]]
+@@ -3003,12 +3003,12 @@ proc wsurf::_miscPage {p} {
+ 		     timeFormat yaxisWidth prefsWithConf theme beg play playall \
+ 		     playloop pause \
+ 		     stop record close end print zoomin zoomout zoomall zoomsel] {
+-	puts var=$var
++#	puts var=$var
+ 	if [info exists Info(Prefs,$var)] {
+-	    puts "set Info(Prefs,t,$var) $Info(Prefs,$var)"
++#	    puts "set Info(Prefs,t,$var) $Info(Prefs,$var)"
+ 	    set Info(Prefs,t,$var) $Info(Prefs,$var)
+ 	} else {
+-	    puts "no Info(Prefs,$var)"
++#	    puts "no Info(Prefs,$var)"
+ 	}
+     }
+     if {$Info(Prefs,t,defaultConfig)==""} {

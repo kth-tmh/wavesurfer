@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+
+%:
+	dh $@
+
+execute_after_dh_install:
+	$(RM) debian/wavesurfer/usr/share/tcltk/wavesurfer/plugins/README.txt
+	$(RM) debian/wavesurfer/usr/share/tcltk/wavesurfer/plugins/example[12].plug
+	chmod 755 debian/wavesurfer/usr/share/tcltk/wavesurfer/app-wavesurfer/wavesurfer.tcl \
+		  debian/wavesurfer/usr/share/tcltk/wavesurfer/wsurf/tkcon.tcl

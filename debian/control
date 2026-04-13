@@ -1,0 +1,22 @@
+Source: wavesurfer
+Section: sound
+Priority: optional
+Maintainer: Debian QA Group <packages@qa.debian.org>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Homepage: https://sourceforge.net/projects/wavesurfer
+Vcs-Browser: https://salsa.debian.org/debian/wavesurfer
+Vcs-Git: https://salsa.debian.org/debian/wavesurfer.git
+Rules-Requires-Root: no
+
+Package: wavesurfer
+Architecture: all
+Depends: tcl-snack,
+         tk8.6,
+         ${misc:Depends},
+Suggests: tkdnd,
+Description: Sound Manipulation Program
+ Wavesurfer is a sound manipulation program, it has been designed to suit both
+ novice and advanced users. WaveSurfer has a simple and logical user interface
+ that provides functionality in an intuitive way and which can be adapted to
+ different tasks.

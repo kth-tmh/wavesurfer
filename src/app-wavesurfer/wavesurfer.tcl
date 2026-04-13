@@ -2,10 +2,10 @@
 # the next line restarts using wish \
 exec wish "$0" "$@"
 
-set RELEASE @RELEASE@
+set RELEASE 1.8.8p5
 set BUILD @BUILD@
 #
-#  @COPYRIGHT@
+#  Copyright (c) 2000-2017 Jonas Beskow and Kare Sjolander
 #
 # This file is part of the WaveSurfer package.
 # The latest version can be found at http://sourceforge.net/projects/wavesurfer
@@ -67,7 +67,7 @@ namespace eval ::splash {
  set bg lightgray
  set fg black
  set fg2 black
- pack [label $splash.lx -text [::util::mc "WaveSurfer @RELEASE@"] -font "helvetica 12" -bg $bg -fg $fg] -side top -expand 1 -fill x
+ pack [label $splash.lx -text [::util::mc "WaveSurfer 1.8.8p5"] -font "helvetica 12" -bg $bg -fg $fg] -side top -expand 1 -fill x
  pack [canvas $splash.c -width $width -height $height -bg $bg -highlightthickness 0] -side top 
  $splash.c create image $pad $pad -image $img -anchor nw
  pack [label $splash.l0 -text [::util::mc "Initializing..."] -font "helvetica 12" -bg $bg -fg $fg] -side top -expand 1 -fill x
@@ -2558,7 +2558,8 @@ proc RegTypesDialog {} {
 }
 
 proc About {} {
- tk_messageBox -title "About WaveSurfer" -message "@ABOUTWAVESURFER@\nTcl/Tk version:[info patchlevel]"
+ tk_messageBox -title "About WaveSurfer" -message "WaveSurfer 1.8.8p5-1701261420
+Copyright (c) 2000-2017 Jonas Beskow and Kare Sjolander\n"
 }
 
 if {![string match macintosh $::tcl_platform(platform)]} {
@@ -2651,7 +2652,7 @@ toplevel .x
 #wm iconbitmap .x snackPlay
 set Info(toplevels) .x
 wm withdraw .x
-wm title .x "WaveSurfer @RELEASE@"
+wm title .x "WaveSurfer 1.8.8p5"
 wm minsize .x 200 1
 if {$::tcl_platform(os) == "Darwin"} {
     bind .x <Visibility> [list wm resizable .x 1 0]
